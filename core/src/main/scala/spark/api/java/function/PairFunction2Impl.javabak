@@ -1,0 +1,13 @@
+package spark.api.java.function;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class PairFunction2Impl extends PairFunction2<Double, Integer, Integer> {
+	
+	@Override
+	public HashMap<Integer, HashMap<Iterable<Double>, Integer>> call(Iterable<Double> t) throws Exception {
+	
+		return null;
+	}
+}

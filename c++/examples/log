@@ -1,0 +1,60 @@
+13/03/09 21:28:48 INFO slf4j.Slf4jEventHandler: Slf4jEventHandler started
+13/03/09 21:28:49 INFO storage.BlockManagerMaster: Registered BlockManagerMaster Actor
+13/03/09 21:28:49 INFO storage.MemoryStore: MemoryStore started with capacity 1201.5 MB.
+13/03/09 21:28:49 INFO storage.DiskStore: Created local directory at /tmp/spark-local-20130309212849-1ba1
+13/03/09 21:28:49 INFO network.ConnectionManager: Bound socket to port 43998 with id = ConnectionManagerId(hi-server,43998)
+13/03/09 21:28:49 INFO storage.BlockManagerMaster: Trying to register BlockManager
+13/03/09 21:28:49 INFO storage.BlockManagerMasterActor: Registering block manager hi-server:43998 with 1201.5 MB RAM
+13/03/09 21:28:49 INFO storage.BlockManagerMaster: BlockManager registered successfully @ syncRegisterBlockManager
+13/03/09 21:28:49 INFO storage.BlockManagerMaster: Done registering BlockManager
+13/03/09 21:28:49 INFO server.Server: jetty-7.x.y-SNAPSHOT
+13/03/09 21:28:49 INFO server.AbstractConnector: Started SelectChannelConnector@0.0.0.0:50105 STARTING
+13/03/09 21:28:49 INFO broadcast.HttpBroadcast: Broadcast server started at http://127.0.1.1:50105
+13/03/09 21:28:49 INFO spark.CacheTracker: Registered CacheTrackerActor actor
+13/03/09 21:28:49 INFO spark.MapOutputTracker: Registered MapOutputTrackerActor actor
+13/03/09 21:28:49 INFO spark.HttpFileServer: HTTP File server directory is /tmp/spark-2f40243d-3631-466c-bd3a-a97a0d1fdbfa
+13/03/09 21:28:49 INFO server.Server: jetty-7.x.y-SNAPSHOT
+13/03/09 21:28:49 INFO server.AbstractConnector: Started SelectChannelConnector@0.0.0.0:48090 STARTING
+13/03/09 21:28:50 INFO storage.MemoryStore: ensureFreeSpace(35313) called with curMem=0, maxMem=1259895521
+13/03/09 21:28:50 INFO storage.MemoryStore: Block broadcast_0 stored as values to memory (estimated size 34.5 KB, free 1201.5 MB)
+13/03/09 21:28:50 INFO mapred.FileInputFormat: Total input paths to process : 1
+1....
+13/03/09 21:28:50 INFO spark.SparkContext: Starting job: collect at <unknown>:0
+13/03/09 21:28:50 INFO scheduler.DAGScheduler: Registering RDD 2 (flatMap at <unknown>:0)
+13/03/09 21:28:50 INFO spark.CacheTracker: Registering RDD ID 2 with cache
+13/03/09 21:28:50 INFO spark.CacheTrackerActor: Registering RDD 2 with 2 partitions
+13/03/09 21:28:50 INFO scheduler.DAGScheduler: Registering parent RDD 2 (flatMap at <unknown>:0)
+13/03/09 21:28:50 INFO scheduler.DAGScheduler: Registering parent RDD 1 (textFile at <unknown>:0)
+13/03/09 21:28:50 INFO spark.CacheTracker: Registering RDD ID 1 with cache
+13/03/09 21:28:50 INFO spark.CacheTrackerActor: Registering RDD 1 with 2 partitions
+13/03/09 21:28:50 INFO scheduler.DAGScheduler: Registering parent RDD 0 (textFile at <unknown>:0)
+13/03/09 21:28:50 INFO spark.CacheTracker: Registering RDD ID 0 with cache
+13/03/09 21:28:50 INFO spark.CacheTrackerActor: Registering RDD 0 with 2 partitions
+13/03/09 21:28:50 INFO spark.CacheTrackerActor: Asked for current cache locations
+13/03/09 21:28:51 INFO scheduler.DAGScheduler: Got job 0 (collect at <unknown>:0) with 2 output partitions
+13/03/09 21:28:51 INFO scheduler.DAGScheduler: Final stage: Stage 0 (flatMap at <unknown>:0)
+13/03/09 21:28:51 INFO scheduler.DAGScheduler: Parents of final stage: List()
+13/03/09 21:28:51 INFO scheduler.DAGScheduler: Missing parents: List()
+13/03/09 21:28:51 INFO scheduler.DAGScheduler: Submitting Stage 0 (flatMap at <unknown>:0), which has no missing parents
+13/03/09 21:28:51 INFO scheduler.DAGScheduler: Submitting 2 missing tasks from Stage 0
+13/03/09 21:28:51 INFO local.LocalScheduler: Running task 0
+13/03/09 21:28:51 INFO local.LocalScheduler: Running task 1
+13/03/09 21:28:51 INFO local.LocalScheduler: Size of task 0 is 2816 bytes
+13/03/09 21:28:51 INFO local.LocalScheduler: Size of task 1 is 2816 bytes
+13/03/09 21:28:51 INFO spark.CacheTracker: Cache key is rdd_1_0
+13/03/09 21:28:51 INFO spark.CacheTracker: Cache key is rdd_1_1
+13/03/09 21:28:51 INFO spark.CacheTracker: Computing partition spark.rdd.HadoopSplit@691
+13/03/09 21:28:51 INFO spark.CacheTracker: Computing partition spark.rdd.HadoopSplit@692
+13/03/09 21:28:51 INFO storage.MemoryStore: ensureFreeSpace(584) called with curMem=35313, maxMem=1259895521
+13/03/09 21:28:51 INFO storage.MemoryStore: Block rdd_1_0 stored as values to memory (estimated size 584.0 B, free 1201.5 MB)
+13/03/09 21:28:51 INFO storage.MemoryStore: ensureFreeSpace(392) called with curMem=35897, maxMem=1259895521
+13/03/09 21:28:51 INFO storage.MemoryStore: Block rdd_1_1 stored as values to memory (estimated size 392.0 B, free 1201.5 MB)
+13/03/09 21:28:51 INFO storage.BlockManagerMasterActor: Added rdd_1_0 in memory on hi-server:43998 (size: 584.0 B, free: 1201.5 MB)
+13/03/09 21:28:51 INFO storage.BlockManagerMasterActor: Added rdd_1_1 in memory on hi-server:43998 (size: 392.0 B, free: 1201.5 MB)
+13/03/09 21:28:51 INFO local.LocalScheduler: Finished task 1
+13/03/09 21:28:51 INFO local.LocalScheduler: Finished task 0
+13/03/09 21:28:51 INFO scheduler.DAGScheduler: Completed ResultTask(0, 1)
+13/03/09 21:28:51 INFO scheduler.DAGScheduler: Completed ResultTask(0, 0)
+13/03/09 21:28:51 INFO spark.SparkContext: Job finished: collect at <unknown>:0, took 0.562411336 s
+is String
+client: convert.cpp:458: T convertFromJObject(JNIEnv*, jobject) [with T = std::vector<std::basic_string<char> >, JNIEnv = JNIEnv_, jobject = _jobject*]: Assertion `iterator != __null' failed.

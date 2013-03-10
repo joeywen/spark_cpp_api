@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+import os
+
+
+env = Environment(CPPPATH = ['/usr/local/include', 
+		'/usr/local/lib', 
+		'/home/software/java/jdk1.6.0_37/jre/lib/amd64/server/'])
+
+env.Program('wordcount',
+		'main.cpp',
+		LIBS = ['sparkAPI', 'jvm'],
+		LIBPATH = ['/usr/local/lib', '/home/software/java/jdk1.6.0_37/jre/lib/amd64/server/'])
