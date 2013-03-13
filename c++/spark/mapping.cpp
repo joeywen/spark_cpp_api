@@ -24,6 +24,7 @@
 
 using namespace std;
 
+
 void get_nextval(char const* ptrn, int plen, int* nextval) {
 	int i = 0;
 	nextval[i] = -1;
@@ -220,4 +221,82 @@ jobject mapping(JNIEnv* env, Object* obj,string super, jobject obj1, jobject obj
 	cerr << "in mapping 2 jobjects, fatal error ==> return NULL, superclass is " << super <<  endl;
 
 	return NULL;
+}
+
+jint mappingPartitions(JNIEnv* env, Object* obj,string super, jobject jobj) {
+	string pattern("Partitioner<string>");
+	if (kmp_search(pattern.c_str(), pattern.size(),super.c_str(), super.size(), 0) >= 0) {
+		Partitioner<string>* ptr = dynamic_cast<Partitioner<string>* >(obj);
+		assert(ptr != NULL);
+
+		return ptr->getPartitions(convertFromJObject<string>(env, jobj));
+	}
+
+	pattern = "Partitioner<double>";
+	if (kmp_search(pattern.c_str(), pattern.size(), super.c_str(), super.size(),
+			0) >= 0) {
+		Partitioner<double>* ptr = dynamic_cast<Partitioner<double>*>(obj);
+		assert(ptr != NULL);
+
+		return ptr->getPartitions(convertFromJObject<double>(env, jobj));
+	}
+
+	pattern = "Partitioner<vector<string>>";
+	if (kmp_search(pattern.c_str(), pattern.size(), super.c_str(), super.size(),
+			0) >= 0) {
+		Partitioner<vector<string> >* ptr = dynamic_cast<Partitioner<vector<string> >*>(obj);
+		assert(ptr != NULL);
+
+		return ptr->getPartitions(convertFromJObject< vector<string> >(env, jobj));
+	}
+
+	pattern = "Partitioner<vector<double>>";
+	if (kmp_search(pattern.c_str(), pattern.size(), super.c_str(), super.size(),
+			0) >= 0) {
+		Partitioner<vector<double> >* ptr = dynamic_cast<Partitioner<vector<double> >*>(obj);
+		assert(ptr != NULL);
+
+		return ptr->getPartitions(convertFromJObject<vector<double> >(env, jobj));
+	}
+}
+
+jboolean mappingEquals(JNIEnv* env, Object* obj ,string super, jobject jobj) {
+	string pattern("Partitioner<string>");
+	if (kmp_search(pattern.c_str(), pattern.size(), super.c_str(), super.size(),
+			0) >= 0) {
+		Partitioner<string>* ptr = dynamic_cast<Partitioner<string>*>(obj);
+		assert(ptr != NULL);
+
+		return ptr->equals(convertFromJObject<string>(env, jobj));
+	}
+
+	pattern = "Partitioner<double>";
+	if (kmp_search(pattern.c_str(), pattern.size(), super.c_str(), super.size(),
+			0) >= 0) {
+		Partitioner<double>* ptr = dynamic_cast<Partitioner<double>*>(obj);
+		assert(ptr != NULL);
+
+		return ptr->equals(convertFromJObject<double>(env, jobj));
+	}
+
+	pattern = "Partitioner<vector<string>>";
+	if (kmp_search(pattern.c_str(), pattern.size(), super.c_str(), super.size(),
+			0) >= 0) {
+		Partitioner<vector<string> >* ptr = dynamic_cast<Partitioner<
+				vector<string> >*>(obj);
+		assert(ptr != NULL);
+
+		return ptr->equals(
+				convertFromJObject<vector<string> >(env, jobj));
+	}
+
+	pattern = "Partitioner<vector<double>>";
+	if (kmp_search(pattern.c_str(), pattern.size(), super.c_str(), super.size(),
+			0) >= 0) {
+		Partitioner<vector<double> >* ptr = dynamic_cast<Partitioner<
+				vector<double> >* >(obj);
+		assert(ptr != NULL);
+
+		return ptr->equals(convertFromJObject<vector<double> >(env, jobj));
+	}
 }

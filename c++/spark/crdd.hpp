@@ -150,7 +150,25 @@ public:
 
 	template<typename T, typename K, typename V>
 	CPairRDD& pairflatMap(const PairFlatMapContext<T, K, V>& fname) {
-		return NULL;
+		const char* name = typeid(fname).name();
+		jclass funcls = env->FindClass("spark/api/java/jni/PairFlatMapFunctionImpl");
+		assert(funcls != NULL);
+
+		jmethodID cons = env->GetMethodID(funcls, "<init>", "(Ljava/lang/String;)V");
+		assert(cons != NULL);
+
+		jstring jparam = env->NewStringUTF(name);
+		jobject funobj = env->NewObject(funcls, cons, jparam);
+		assert(funobj != NULL);
+
+		jmethodID mid = env->GetMethodID(rddClazz, "flatMap", "(Lspark/api/java/function/PairFlatMapFunction;)Lspark/api/java/JavaPairRDD;");
+		assert(mid != NULL);
+
+		jobject obj = env->CallObjectMethod(rdd, mid, funobj);
+		assert(obj != NULL);
+		
+		rdd = obj;
+		return *this;
 	}
 
 	template<typename T, typename R>

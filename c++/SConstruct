@@ -39,7 +39,7 @@ if scala_home == None:
 	sys.exit()
 	
 # starting to build spark project
-spark_process = subprocess.Popen('sbt/sbt package', shell = True, executable = "/bin/bash")
+spark_process = subprocess.Popen('sbt/sbt assembly', shell = True, executable = "/bin/bash")
 spark_process.wait()
 
 if spark_process.returncode != 0:
@@ -60,9 +60,14 @@ os.environ['SPARK_CLASS_PATH'] = home + '/.class'
 
 env = env.Append(CPPPATH = [java_home + '/include', 
 							java_home + '/include/linux',
-							java_home + '/jre/lib/amd64/server'])
+							java_home + '/jre/lib/amd64/server'],
+				LIBS = ['jvm', 'pthread'],
+				LIBPATH = [java_home + '/jre/lib/amd64/server'])
 
 sources = Golb('*.c*')
+
+spark_jni_obj = env.Object(sources)
+
 spark_jni_so = env.SharedLibrary('#c++/spark/jni/spark_jni',
 				sources,
 				LIBS = 'jvm',

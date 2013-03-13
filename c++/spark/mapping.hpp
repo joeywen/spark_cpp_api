@@ -13,6 +13,10 @@ jobject mapping(JNIEnv* env, Object*,string super, jobject obj);
 
 jobject mapping(JNIEnv* env, Object*,string super, jobject obj1, jobject obj);
 
+jint mappingPartitions(JNIEnv* env, Object*,string super, jobject obj);
+
+jboolean mappingEquals(JNIEnv* env, Object*,string super, jobject obj);
+
 // KMP string search algorithm
 void get_nextval(char const* ptrn, int plen, int* nextval);
 

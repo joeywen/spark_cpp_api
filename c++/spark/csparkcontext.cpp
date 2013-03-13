@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <cassert>
+#include <stdio.h>
 #include <cstdlib>
 
 #include "spark/csparkcontext.hpp"
@@ -18,8 +19,14 @@ CSparkContext::CSparkContext(const std::string& _master,
 		const std::string& _jobName) :
 		master(_master), jobName(_jobName) {
 	//must be modified in futrue
-	string classpath =
-			"/home/bolei/workspace/spark-0.6.0/core/target/scala-2.9.2/classes";
+
+	string cp(getenv("HOME"));
+
+	if (cp.empty()) {
+		fprintf(stderr, "get current home dir error !\n");
+	}
+
+	string classpath = cp + "/.classes";
 
 	string jarpath = "/usr/local/lib";
 	env = createJvm(classpath, jarpath);

@@ -90,6 +90,21 @@ public:
 	virtual ~Class();
 };
 
+
+template<class T>
+class Partitioner : public Object {
+public:
+	Partitioner(int num) : numPartitions(num) {}
+	virtual ~Partitioner(){}
+
+	virtual int getPartitions(T t) = 0;
+	virtual bool equals(T t) = 0;
+
+public:
+	int numPartitions;
+};
+
+
 template<class T, class R>
 class MapContext : public Object {
 	public:
@@ -145,13 +160,6 @@ class Attachment {
 
 	public:
 		T _attach;
-};
-
-
-class Partitioner : public Object {
-public:
-	Partitioner(){}
-	virtual ~Partitioner(){}
 };
 
 #endif // Class.h

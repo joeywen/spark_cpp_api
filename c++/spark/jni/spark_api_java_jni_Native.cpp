@@ -87,3 +87,46 @@ JNIEXPORT jobject JNICALL Java_spark_api_java_jni_Native_pairCall
 	const string supername = clazz->getSuperClassName();
 	return mapping(env, object, supername, obj);
 }
+
+/*
+ * Class:     spark_api_java_jni_Native
+ * Method:    callPairFlatMap
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Iterable;
+ */
+JNIEXPORT jobject JNICALL Java_spark_api_java_jni_Native_callPairFlatMap
+  (JNIEnv *env, jobject jobj, jobject obj , jstring fname) {
+}
+
+/*
+ * Class:     spark_api_java_jni_Native
+ * Method:    getPartition
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;)I
+ */
+JNIEXPORT jint JNICALL Java_spark_api_java_jni_Native_getPartition
+  (JNIEnv *env, jobject jobj, jobject obj, jstring fname) {
+	string name = jstrTocstr(env, fname);
+	Class *clazz = Class::forName(name);
+	assert(clazz != NULL);
+	Object *object = clazz->newInstance();
+	assert(object != NULL);
+
+	const string supername = clazz->getSuperClassName();
+	return mappingPartitions(env, object, supername, obj);
+}
+
+/*
+ * Class:     spark_api_java_jni_Native
+ * Method:    equals
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_spark_api_java_jni_Native_equals
+  (JNIEnv *env, jobject jobj, jobject obj, jstring fname) {
+	string name = jstrTocstr(env, fname);
+	Class *clazz = Class::forName(name);
+	assert(clazz != NULL);
+	Object *object = clazz->newInstance();
+	assert(object != NULL);
+
+	const string supername = clazz->getSuperClassName();
+	return mappingEquals(env, object, supername, obj);
+}

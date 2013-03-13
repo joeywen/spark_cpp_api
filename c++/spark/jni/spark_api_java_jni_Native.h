@@ -39,6 +39,30 @@ JNIEXPORT jobject JNICALL Java_spark_api_java_jni_Native_functionCall
 JNIEXPORT jobject JNICALL Java_spark_api_java_jni_Native_pairCall
   (JNIEnv *, jobject, jobject, jstring);
 
+/*
+ * Class:     spark_api_java_jni_Native
+ * Method:    callPairFlatMap
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Iterable;
+ */
+JNIEXPORT jobject JNICALL Java_spark_api_java_jni_Native_callPairFlatMap
+  (JNIEnv *, jobject, jobject, jstring);
+
+/*
+ * Class:     spark_api_java_jni_Native
+ * Method:    getPartition
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;)I
+ */
+JNIEXPORT jint JNICALL Java_spark_api_java_jni_Native_getPartition
+  (JNIEnv *, jobject, jobject, jstring);
+
+/*
+ * Class:     spark_api_java_jni_Native
+ * Method:    equals
+ * Signature: (Ljava/lang/Object;Ljava/lang/String;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_spark_api_java_jni_Native_equals
+  (JNIEnv *, jobject, jobject, jstring);
+
 #ifdef __cplusplus
 }
 #endif
