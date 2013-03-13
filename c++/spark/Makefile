@@ -22,7 +22,8 @@ OBJS = convert.o \
 	   cpairrdd.o \
 	   csparkcontext.o \
 	   Class.o \
-	   mapping.o
+	   mapping.o \
+	   storageLevel.o
 	  
 
 TARGET = libsparkAPI.so

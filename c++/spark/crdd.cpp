@@ -13,6 +13,7 @@
 #include "spark/require.hpp"
 #include "spark/convert.hpp"
 #include "spark/Class.h"
+#include "spark/storageLevel.h"
 
 using namespace std;
 
@@ -36,10 +37,8 @@ CRDD& CRDD::cache() {
 	jobject obj = env->CallObjectMethod(rdd, mid);
 	assure(obj != NULL, env);
 
-	CRDD result(env, obj, sparkctx);
-	return result;
-	/*rdd = obj;
-	return *this;*/
+	rdd = obj;
+	return *this;
 }
 
 CRDD& CRDD::persist() {
@@ -47,14 +46,14 @@ CRDD& CRDD::persist() {
 }
 
 CRDD& CRDD::persist(const StorageLevel newlevel) {
-	/*if (level != NONE && newlevel != level) {
+	if (level != NONE && newlevel != level) {
 		cerr
 				<< "Cannot change storage level of an RDD after it was already assigned a level"
 				<< endl;
 	}
 
 	level = newlevel;
-	char* ss = "";//getStorageLevel(level);
+	char* ss = getStorageLevel(level);
 
 	jclass storagecls = env->FindClass("spark/api/java/StorageLevel");
 	assert(storagecls != NULL);
@@ -73,7 +72,7 @@ CRDD& CRDD::persist(const StorageLevel newlevel) {
 	jobject obj = env->CallObjectMethod(rdd, mid, levelObj);
 	assert(obj != NULL);
 
-	rdd = obj;*/
+	rdd = obj;
 	return *this;
 }
 
